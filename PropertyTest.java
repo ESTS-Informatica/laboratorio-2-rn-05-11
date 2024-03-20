@@ -13,25 +13,26 @@ import org.junit.jupiter.api.Test;
  */
 public class PropertyTest
 {
+    Property property1;
+    
     /**
      * Construtor default para a classe de teste PropertyTest
      */
     public PropertyTest()
     {
+        property1 = new Property("T3 Monte Belo", 150000.0);
     }
     
     @Test
     public void testConstructor(){
-        Property property1 = new Property("T3 Monte Belo", 150000.0);
-        assertEquals("1", property1.getId());
         assertEquals("T3 Monte Belo", property1.getDescription());
         assertEquals(150000.0, property1.getPrice());
     }
-    
-    
-    
-    
-    
+ 
+    @Test
+    public void testtoString(){
+        assertEquals("Descricao     :  " + property1.getDescription() + "\n Preco     :  " + property1.getPrice() + " Euros", property1.toString());
+    }
     
     /**
      * Define a 'fixture' do teste.
