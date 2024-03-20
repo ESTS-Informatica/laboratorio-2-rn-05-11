@@ -24,6 +24,8 @@ public class Company {
      * Constructor of class Company
      */
     public Company() {
+        clients = new ArrayList<User>();
+        sellers = new ArrayList<User>();
 
     }
 
@@ -33,7 +35,7 @@ public class Company {
      * @return This company clients.
      */
     public List<User> getClients() {
-        return null;         // dummy implementation
+        return clients;
     }
 
     /**
@@ -42,7 +44,7 @@ public class Company {
      * @return This company sellers.
      */
     public List<User> getSellers() {
-        return null;         // dummy implementation
+        return sellers;
     }
 
     /**
@@ -70,7 +72,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerClient(User client) {
-        return true;         // dummy implementation
+        if(client != null){
+            clients.add(client);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -80,7 +86,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSeller(User seller) {
-        return true;         // dummy implementation
+        if(seller != null){
+            sellers.add(seller);
+            return true;
+        }
+        return false;
     }
 
     /**
