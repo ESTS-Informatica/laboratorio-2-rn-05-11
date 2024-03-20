@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
+import java.math.*;
 
 /**
  * Manage a company.
@@ -27,6 +28,7 @@ public class Company {
         clients = new ArrayList<User>();
         sellers = new ArrayList<User>();
         properties = new ArrayList<Property>();
+        sells = new ArrayList<Sell>();
 
     }
 
@@ -54,7 +56,7 @@ public class Company {
      * @return This company's properties.
      */
     public List<Property> getProperties() {
-        return null;         // dummy implementation
+        return properties;
     }
 
     /**
@@ -63,7 +65,7 @@ public class Company {
      * @return This company sells.
      */
     public List<Sell> getSells() {
-        return null;         // dummy implementation
+        return sells;
     }
 
     /**
@@ -115,7 +117,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSell(Sell sell) {
-        return true;         // dummy implementation
+        if (sell != null && !sells.contains(sell)){
+            sells.add(sell);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -127,7 +133,12 @@ public class Company {
      * @return true If the request succeeds, false otherwise.
      */
     public boolean createSell(User client, User seller, Property property) {
-        return true;         // dummy implementation
+        if(clients.contains(client) && sellers.contains(seller) && properties.contains(property)){
+            Sell sell = new Sell(client, seller, property);
+            sells.add(sell);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -137,7 +148,13 @@ public class Company {
      * @return The total number of sells in the year.
      */
     public int calculateSellsOfTheYear(int year) {
-        return 0;         // dummy implementation
+        int count = 0;
+        for(Sell sell : sells){
+            if(sell.getDate().getYear() == year){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -147,7 +164,13 @@ public class Company {
      * @return The name of the seller of the year.
      */
     public String findSellerOfTheYear(int year) {
-        return null;         // dummy implementation
+        ArrayList<User> localsellers = new ArrayList<>();
+        for(Sell sell : sells){
+            if(sell.getDate().getYear() == year){
+                localsellers.add(sell.getSeller());
+            }
+        }
+        return "";
     }
 
 }
