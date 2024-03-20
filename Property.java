@@ -1,5 +1,4 @@
 
-
 /**
  * A property to sell.
  *
@@ -8,9 +7,9 @@
  */
 public class Property {
 
-    private static int NUMBER_OF_PROPERTIES = 0;
+    private static int numberOfProperties = 0;
     private final String id;
-    private String model;
+    private String description;
     private double price;
 
     /**
@@ -20,6 +19,10 @@ public class Property {
      * @param price The property price.
      */
     public Property(String description, double price) {
+        this.description = description;
+        this.price = price;
+        numberOfProperties++;
+        this.id = Integer.toString(numberOfProperties);
 
     }
 
@@ -27,14 +30,14 @@ public class Property {
      * Id selector.
      */
     public String getId() {
-        
+        return id;
     }
 
     /**
      * Description selector.
      */
     public String getDescription() {
-
+        return description;
     }
 
     /**
@@ -50,9 +53,9 @@ public class Property {
      * Price selector.
      */
     public double getPrice() {
-        
+        return price;
     }
-    
+
     /**
      * Price modifier.
      * 
@@ -64,5 +67,6 @@ public class Property {
 
     @Override
     public String toString() {
+        return null;
     }
 }
