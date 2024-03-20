@@ -26,6 +26,7 @@ public class Company {
     public Company() {
         clients = new ArrayList<User>();
         sellers = new ArrayList<User>();
+        properties = new ArrayList<Property>();
 
     }
 
@@ -72,7 +73,7 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerClient(User client) {
-        if(client != null){
+        if(client != null && !clients.contains(client)){
             clients.add(client);
             return true;
         }
@@ -86,7 +87,7 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSeller(User seller) {
-        if(seller != null){
+        if(seller != null && !sellers.contains(seller)){
             sellers.add(seller);
             return true;
         }
@@ -100,7 +101,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerProperty(Property property) {
-        return true;         // dummy implementation
+        if(property != null && !properties.contains(property)){
+            properties.add(property);
+            return true;
+        }
+        return false;
     }
 
     /**
